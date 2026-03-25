@@ -4,7 +4,7 @@ import Card from "./components/Card"
 export default function App() {
   // const [point, setPoint] = useState([]);
   const ab = () => {
-    alert("Fuyoooou!")
+    alert("Fuyoooouu!")
   }
   const pro = [
     { "name": "Aarav Mehta", "location": "Mumbai, MH", "phone": "+91-98765-43210", "profile_image": "https://i.pravatar.cc/150?u=aarav" },
