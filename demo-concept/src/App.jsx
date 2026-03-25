@@ -1,11 +1,15 @@
 import Header from "./components/Header"
 import Navbar from "./components/Navbar"
 import Card from "./components/Card"
+import { useState } from "react"
+
 export default function App() {
-  // const [point, setPoint] = useState([]);
-  const ab = () => {
-    alert("Fuyoooouu!")
-  }
+  // const [point, setPoint] = useState();
+  const ab = () => (
+    console.log(searchTerm)
+  
+  )
+  const [searchTerm, setSearchTerm] = useState("")
   const pro = [
     { "name": "Aarav Mehta", "location": "Mumbai, MH", "phone": "+91-98765-43210", "profile_image": "https://i.pravatar.cc/150?u=aarav" },
     { "name": "Ishani Bose", "location": "Kolkata, WB", "phone": "+91-98300-12345", "profile_image": "https://i.pravatar.cc/150?u=ishani" },
@@ -44,13 +48,13 @@ export default function App() {
       <Navbar />
       <div className="w-full p-8 text-center ">
         <form>
-          <input type="text" placeholder="Search Product" className="p-2 rounded-xl bg-emerald-900 mr-4.5" />
+          <input type="text" value={searchTerm} onChange={(e)=>{setSearchTerm(e.target.value);console.log(searchTerm)}} placeholder="Search name" className="p-2 rounded-xl bg-emerald-900 mr-4.5" />
           <button className='font-bold rounded-4xl bg-amber-400 w-50 p-3 ' onClick={ab}>Yeppy</button>
         </form>
       </div>
       <div className="p-8 border border-white w-full bg-slate-900 items-center">
-        {pro.map((item) => (
-          <Card user={item.name} location={item.location} phone={item.phone} img={item.profile_image}/>
+        {pro.map((item,key) => (
+          <Card key={key} user={item.name} location={item.location} phone={item.phone} img={item.profile_image}/>
 
         ))}
       </div>
