@@ -5,25 +5,30 @@ const App = () => {
   const [password, setpassword] = useState('');
   const [numcon, setNumcon] = useState(false)
   const [charcon, setCharcon] = useState(false)
+  const [alphacon, setAlphacon] = useState(false)
   const passwordGenerator = useCallback(() => {
     const char = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     const num = '0123456789';
     let pass = '';
-    let characters = char;
+    let characters = "";
     if (numcon) {
       characters += num;
     }
     if (charcon) {
       characters += '!@#$%^&*()_+~`|}{[]:;?><,./-=';
     }
+    if (alphacon) {
+      characters += char;
+    }
     for (let i = 0; i < length; i++) {
       pass += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     setpassword(pass);
-  }, [length, numcon, charcon, setpassword]);
+  }, [length, numcon, charcon, alphacon, setpassword]);
 
   useEffect(() => {
-  }, [passwordGenerator]);
+    passwordGenerator();
+  }, [passwordGenerator, length, numcon, charcon, alphacon]);
 
   return (
     <>
@@ -51,7 +56,7 @@ const App = () => {
               <input
                 type="range"
                 min={8}
-                max={50}
+                max={20}
                 value={length}
                 className="cursor-pointer accent-blue-500"
                 onChange={(e) => setlength(e.target.value)}
@@ -68,6 +73,16 @@ const App = () => {
                   onChange={() => setNumcon(!numcon)}
                 />
                 <label htmlFor="numberInput" className="cursor-pointer select-none">Numbers</label>
+              </div>
+
+              <div className="flex items-center gap-x-2">
+                <input
+                  type="checkbox"
+                  id="alphaInput"
+                  className="w-4 h-4 rounded accent-blue-500"
+                  onChange={() => setAlphacon(!alphacon)}
+                />
+                <label htmlFor="alphaInput" className="cursor-pointer select-none">Alphabets</label>
               </div>
 
               <div className="flex items-center gap-x-2">
