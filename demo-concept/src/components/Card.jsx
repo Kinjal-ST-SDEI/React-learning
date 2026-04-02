@@ -1,5 +1,5 @@
 const Card = (props) => {
-    console.log(props)
+    // console.log(props)
     return (
         <>
             <div className="font-bold bg-white text-black p-8 text-center inline-block rounded m-4">
